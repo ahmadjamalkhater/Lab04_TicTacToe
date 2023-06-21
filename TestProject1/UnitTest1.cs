@@ -136,7 +136,7 @@ public class UnitTest1
 
         // Act
 
-        bool winner = game.CheckForWinner(game.Board);
+         bool winner = game.CheckForWinner(game.Board);
 
         // Assert
         Assert.Equal(winner, false);
