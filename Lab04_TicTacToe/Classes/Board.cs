@@ -6,9 +6,6 @@ namespace Lab04_TicTacToe.Classes
 {
     public class Board
     {
-        /// <summary>
-        /// Tic Tac Toe Gameboard states
-        /// </summary>
         public string[,] GameBoard = new string[,]
         {
             {"1", "2", "3"},
@@ -16,18 +13,12 @@ namespace Lab04_TicTacToe.Classes
             {"7", "8", "9"},
         };
 
-
         public void DisplayBoard()
         {
-
-            //TODO: Output the board to the console
-
             for (int row = 0; row < 3; row++)
             {
-
                 for (int col = 0; col < 3; col++)
                 {
-
                     Console.Write(GameBoard[row, col]);
 
                     if (col < 2)
@@ -39,10 +30,9 @@ namespace Lab04_TicTacToe.Classes
                 Console.WriteLine();
                 if (row < 2)
                 {
-                    Console.WriteLine("----------");
+                    Console.WriteLine("---------");
                 }
             }
-
         }
     }
 }
