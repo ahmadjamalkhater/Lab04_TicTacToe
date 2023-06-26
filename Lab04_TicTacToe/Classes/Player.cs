@@ -7,16 +7,8 @@ namespace Lab04_TicTacToe.Classes
     public class Player
     {
         public string Name { get; set; }
-        /// <summary>
-        /// P1 is X and P2 will be O
-        /// </summary>
         public string Marker { get; set; }
-
-        /// <summary>
-        /// Flag to determine if it is the user's turn
-        /// </summary>
         public bool IsTurn { get; set; }
-
 
         public Position GetPosition(Board board)
         {
@@ -28,9 +20,7 @@ namespace Lab04_TicTacToe.Classes
                 desiredCoordinate = PositionForNumber(position);
             }
             return desiredCoordinate;
-
         }
-
 
         public static Position PositionForNumber(int position)
         {
@@ -45,27 +35,30 @@ namespace Lab04_TicTacToe.Classes
                 case 7: return new Position(2, 0); // Bottom Left
                 case 8: return new Position(2, 1); // Bottom Middle 
                 case 9: return new Position(2, 2); // Bottom Right
-
                 default: return null;
             }
         }
 
-
         public void TakeTurn(Board board)
         {
             IsTurn = true;
+            Console.WriteLine($"{Name}, it is your turn");
 
-            Console.WriteLine($"{Name} it is your turn");
-
-            Position position = GetPosition(board);
-
-            if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out int _))
+            Position position = null;
+            while (position is null)
             {
-                board.GameBoard[position.Row, position.Column] = Marker;
-            }
-            else
-            {
-                Console.WriteLine("This space is already occupied");
+                position = GetPosition(board);
+
+                int number;
+                if (Int32.TryParse(board.GameBoard[position.Row, position.Column], out number))
+                {
+                    board.GameBoard[position.Row, position.Column] = Marker;
+                }
+                else
+                {
+                    Console.WriteLine("This space is already occupied. Please select another position.");
+                    position = null;
+                }
             }
         }
     }
